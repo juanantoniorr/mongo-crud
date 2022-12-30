@@ -14,27 +14,45 @@ public class StudentController {
     StudentService studentService;
 
     @PostMapping("/create")
-    public Student createStudent(@RequestBody Student student){
+    public Student createStudent(@RequestBody Student student) {
         return studentService.createStudent(student);
     }
 
     @GetMapping("/getById/{id}")
-    public Student getById(@PathVariable String id){
-        return studentService.getById(id).isPresent() ? studentService.getById(id).get():null ;
+    public Student getById(@PathVariable String id) {
+        return studentService.getById(id).isPresent() ? studentService.getById(id).get() : null;
     }
+
     @GetMapping("/getAll")
-    public List<Student> getAll(){
+    public List<Student> getAll() {
         return studentService.getAll();
     }
+
     @PutMapping("/update")
-    public Student update(@RequestBody Student student){
+    public Student update(@RequestBody Student student) {
         return studentService.update(student);
     }
+
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable String id){
+    public String delete(@PathVariable String id) {
         studentService.delete(id);
         return "Student deleted";
     }
 
+    @GetMapping("/getByName/{name}")
+    public List<Student> getStudentByName(@PathVariable String name) {
+        return studentService.getByName(name);
+    }
 
+    @GetMapping("/getByNameAndMail")
+    public Student getByNameAndMail(@RequestParam String name, @RequestParam String mail) {
+        return studentService.getByNameAndMail(name, mail);
+    }
+
+    @GetMapping("/getByNameOrMail")
+    public Student getByNameOrMail(@RequestParam String name, @RequestParam String mail) {
+        return studentService.getByNameOrMail(name, mail);
+
+
+    }
 }
