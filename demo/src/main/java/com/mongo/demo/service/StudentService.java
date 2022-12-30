@@ -54,5 +54,8 @@ public class StudentService  {
     public List<Student> getByDepartmentName(String departmentName){
         return studentRepository.findByDepartmentDepartmentName(departmentName);
     }
+    public List<Student> getByMailLike(String mail){
+        return studentRepository.findByMailIsLike(mail);
+    }
 
 }
