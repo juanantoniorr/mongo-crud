@@ -52,7 +52,12 @@ public class StudentController {
     @GetMapping("/getByNameOrMail")
     public Student getByNameOrMail(@RequestParam String name, @RequestParam String mail) {
         return studentService.getByNameOrMail(name, mail);
+    }
 
+    @GetMapping("/getAllWithPagination")
+    public List<Student> getAllWithPagination(@RequestParam int pageNo,
+                                      @RequestParam int pageSize){
+    return studentService.getAllWithPagination(pageNo,pageSize);
 
     }
 }

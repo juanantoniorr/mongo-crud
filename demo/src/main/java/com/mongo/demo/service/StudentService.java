@@ -3,8 +3,9 @@ package com.mongo.demo.service;
 import com.mongo.demo.entity.Student;
 import com.mongo.demo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +40,10 @@ public class StudentService  {
     }
     public Student getByNameOrMail(String name, String email){
         return studentRepository.findByNameOrMail(name,email);
+    }
+    public List<Student> getAllWithPagination(int pageNo, int pageSize){
+        //Page is zero based index
+        Pageable pageable = PageRequest.of(pageNo - 1,pageSize);
+        return studentRepository.findAll(pageable).getContent();
     }
 }
