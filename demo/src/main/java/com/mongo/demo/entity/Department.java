@@ -9,6 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 //No need to annotate this class as is a subdocument
 public class Department {
     @Field(name = "department_name")
-    String departmentName;
-    String location;
+   private  String departmentName;
+   private String location;
 }

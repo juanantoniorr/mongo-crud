@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Setter
 public class Subject {
     @Field(name = "subject_name")
-    String subjectName;
+    private String subjectName;
     @Field(name = "marks_obtained")
-    String marksObtained;
+    private String marksObtained;
 }

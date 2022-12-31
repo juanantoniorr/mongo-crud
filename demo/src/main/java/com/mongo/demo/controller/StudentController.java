@@ -2,6 +2,7 @@ package com.mongo.demo.controller;
 
 import com.mongo.demo.entity.Student;
 import com.mongo.demo.service.StudentService;
+import com.mongo.demo.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +13,14 @@ import java.util.List;
 public class StudentController {
     @Autowired
     StudentService studentService;
+    @Autowired
+    TeacherService teacherService;
 
     @PostMapping("/create")
     public Student createStudent(@RequestBody Student student) {
+        if (student.getTeacher()!=null){
+        teacherService.createTeacher(student.getTeacher());
+        }
         return studentService.createStudent(student);
     }
 
