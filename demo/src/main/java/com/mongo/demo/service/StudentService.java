@@ -58,4 +58,8 @@ public class StudentService  {
         return studentRepository.findByMailIsLike(mail);
     }
 
+    public Student getByTeacherId(String id){
+        return studentRepository.findByTeacherId(id);
+    }
+
 }

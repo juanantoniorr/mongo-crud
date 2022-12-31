@@ -79,4 +79,9 @@ return studentService.getByDepartmentName(departmentName);
     public List<Student> getByMailLike(@RequestParam String mail){
     return studentService.getByMailLike(mail);
     }
+
+    @GetMapping("/getByTeacherId/{id}")
+    public Student getByTeacherId(@PathVariable String id){
+        return studentService.getByTeacherId(id);
+    }
 }
