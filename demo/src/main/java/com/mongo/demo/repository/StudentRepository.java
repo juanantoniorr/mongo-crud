@@ -2,6 +2,7 @@ package com.mongo.demo.repository;
 
 import com.mongo.demo.entity.Student;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface StudentRepository extends MongoRepository<Student,String>{
     List<Student> findByDepartmentDepartmentName(String departmentName);
     List<Student> findByMailIsLike(String mail);
     Student findByTeacherId(String teacherId);
+    @Query("{\"name\": \"?0\"}")
+    List<Student> findByNameNative(String name);
 
 }
 

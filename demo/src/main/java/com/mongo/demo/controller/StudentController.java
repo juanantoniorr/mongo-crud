@@ -84,4 +84,9 @@ return studentService.getByDepartmentName(departmentName);
     public Student getByTeacherId(@PathVariable String id){
         return studentService.getByTeacherId(id);
     }
+
+    @GetMapping("/getByNameNative")
+    public List<Student> getByNameNative(@RequestParam String name){
+        return studentService.getByNameNative(name);
+    }
 }

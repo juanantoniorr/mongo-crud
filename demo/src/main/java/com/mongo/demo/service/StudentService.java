@@ -62,4 +62,8 @@ public class StudentService  {
         return studentRepository.findByTeacherId(id);
     }
 
+    public List<Student> getByNameNative(String name){
+return studentRepository.findByNameNative(name);
+    }
+
 }
