@@ -14,6 +14,7 @@ public class Student {
     @Id
     private String id;
     private String name;
+    private String password;
     private String mail;
     private Department department;
     private List<Subject> subjects;

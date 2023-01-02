@@ -1,5 +1,6 @@
 package com.mongo.demo.controller;
 
+import com.mongo.demo.encoder.EncoderUtil;
 import com.mongo.demo.entity.Student;
 import com.mongo.demo.service.StudentService;
 import com.mongo.demo.service.TeacherService;
@@ -21,6 +22,7 @@ public class StudentController {
         if (student.getTeacher()!=null){
         teacherService.createTeacher(student.getTeacher());
         }
+        student.setPassword(EncoderUtil.encode(student.getPassword()));
         return studentService.createStudent(student);
     }
 
