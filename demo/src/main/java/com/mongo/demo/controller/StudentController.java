@@ -1,10 +1,10 @@
 package com.mongo.demo.controller;
 
-import com.mongo.demo.encoder.EncoderUtil;
 import com.mongo.demo.entity.Student;
 import com.mongo.demo.service.StudentService;
 import com.mongo.demo.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,13 +16,15 @@ public class StudentController {
     StudentService studentService;
     @Autowired
     TeacherService teacherService;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @PostMapping("/create")
     public Student createStudent(@RequestBody Student student) {
         if (student.getTeacher()!=null){
         teacherService.createTeacher(student.getTeacher());
         }
-        student.setPassword(EncoderUtil.encode(student.getPassword()));
+        student.setPassword(passwordEncoder.encode(student.getPassword()));
         return studentService.createStudent(student);
     }
 
